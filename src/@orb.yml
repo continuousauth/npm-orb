@@ -1,0 +1,8 @@
+version: 2.1
+
+description: >
+  Publish NPM packages from CircleCI via Continuous Auth.  This orb automatically acquires a `GITHUB_TOKEN` for use with semantic release.
+
+display:
+  home_url: "https://docs.continuousauth.dev"
+  source_url: "https://github.com/continuousauth/npm-orb"
