@@ -4,7 +4,7 @@ description: >
 steps:
   - run:
       name: Obtain publishing credentials
-      command: npx @continuous-auth/circleci-oidc-github-auth@1.0.4
+      command: npx @continuous-auth/circleci-oidc-github-auth@1.0.5
   - run:
       name: Run Semantic Release
-      command: npx semantic-release@17.4.5
+      command: npx semantic-release@19.0.5
