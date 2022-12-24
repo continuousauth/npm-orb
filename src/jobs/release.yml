@@ -24,7 +24,7 @@ steps:
             command: yarn --frozen-lockfile
   - when:
       condition:
-        equal: [ yarn, << parameters.package-manager >> ]
+        equal: [ npm, << parameters.package-manager >> ]
       steps:
         - run:
             name: Install Dependencies
