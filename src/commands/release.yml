@@ -1,0 +1,10 @@
+description: >
+  This command fetches requisite tokens and publishes an npm package with Continuous Auth and Semantic Release
+
+steps:
+  - run:
+      name: Obtain publishing credentials
+      command: npx @continuous-auth/circleci-oidc-github-auth@1.0.4
+  - run:
+      name: Run Semantic Release
+      command: npx semantic-release@17.4.5

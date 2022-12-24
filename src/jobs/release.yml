@@ -1,0 +1,33 @@
+description: >
+  Runs the release command, by default will only run build steps defined in prepublishOnly
+
+executor: default
+
+parameters:
+  package-manager:
+    type: enum
+    enum: ['npm', 'yarn']
+    default: yarn
+    description: The package manager used to install dependencies, by default "yarn"
+  prepare:
+    type: steps
+    description: Steps to run between `yarn` and `semantic-release`
+    default: []
+steps:
+  - checkout
+  - when:
+      condition:
+        equal: [ yarn, << parameters.package-manager >> ]
+      steps:
+        - run:
+            name: Install Dependencies
+            command: yarn --frozen-lockfile
+  - when:
+      condition:
+        equal: [ yarn, << parameters.package-manager >> ]
+      steps:
+        - run:
+            name: Install Dependencies
+            command: npm ci
+  - steps: << parameters.prepare >>
+  - release
