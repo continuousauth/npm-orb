@@ -7,4 +7,4 @@ steps:
       command: npx @continuous-auth/circleci-oidc-github-auth@1.0.5
   - run:
       name: Run Semantic Release
-      command: npx semantic-release@19.0.5
+      command: npx semantic-release@22.0.6
