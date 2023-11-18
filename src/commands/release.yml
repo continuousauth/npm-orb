@@ -5,7 +5,7 @@ steps:
   - run:
       name: Set up publishing environment
       command: |
-        SHA=75bb06493e97aa02c458562765716091c5610d26
+        SHA=1775eb1aacafd0266ea1897255758d985d0bf291
         DIR=/tmp/semantic-release-packages
         mkdir $DIR
         curl https://raw.githubusercontent.com/continuousauth/npm-orb/$SHA/package.json > $DIR/package.json
