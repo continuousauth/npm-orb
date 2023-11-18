@@ -3,8 +3,19 @@ description: >
 
 steps:
   - run:
+      name: Set up publishing environment
+      command: |
+        SHA=75bb06493e97aa02c458562765716091c5610d26
+        DIR=/tmp/semantic-release-packages
+        mkdir $DIR
+        curl https://raw.githubusercontent.com/continuousauth/npm-orb/$SHA/package.json > $DIR/package.json
+        curl https://raw.githubusercontent.com/continuousauth/npm-orb/$SHA/package-lock.json > $DIR/package-lock.json
+        cd $DIR
+        npm ci
+        echo "export PATH=$DIR/node_modules/.bin:$PATH" >> "$BASH_ENV"
+  - run:
       name: Obtain publishing credentials
-      command: npx @continuous-auth/circleci-oidc-github-auth@1.0.5
+      command: circleci-oidc-github-auth
   - run:
       name: Run Semantic Release
-      command: npx semantic-release@22.0.6
+      command: semantic-release
